@@ -1,4 +1,4 @@
-import ReactKey from "./components/react-key/solution";
+import ReactKey from "./components/react-key/solution/react-key-index";
 
 function App() {
   return (

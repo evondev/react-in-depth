@@ -32,4 +32,11 @@
 
 ## Tại sao không nên sử dụng giá trị **index** trong key
 
+- Đầu tiên React sẽ tạo ra 2 bản, _before_ và _after_ danh sách elements và cố gắng xác định các elements là _như nhau_
+- Như nhau nghĩa là những elements đó key trước và sau giống nhau
+- Giả sử có 5 phần tử, thì phần tử đầu tiên sẽ có key là 0, tiếp đến là 1, rồi 2 và 3 và 4
+- Ban đầu element có key là 0, sau khi re-render thì key trở thành 499, còn element có key 499 trở thành 0.
+- Lúc này React nhận thấy là các key không biến mất mà chỉ đổi từ element này sang element khác mà thôi cho nên không bị unmount hay mounting gì cả, mà chỉ đơn giản là re-render thôi. Tuy nhiên key không thay đổi nhưng nó bị đưa sang element khác cho nên props cũng sẽ khác nên component sẽ bị re-render cho dù có dùng **Memo**
+- Thay vào đó chúng ta nên sử dụng giá trị stable, ví dụ như từ data mà chúng ta đang render, và lưu ý giá trị trong key phải unique(không được trùng nhau)
+
 ## Tại sao nên sử dụng giá trị **index** trong key
