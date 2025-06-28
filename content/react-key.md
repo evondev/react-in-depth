@@ -27,6 +27,9 @@
 
 ## Tại sao sử dụng giá trị **random** cho key lại nguy hiểm
 
+- Ban đầu element có `key` là _10_, sau khi re-render `key` vẫn là _10_, không thay đổi cho nên React sẽ cập nhật (re-render) element đó
+- Ban đầu element có key là _100_, sau khi re-render thì element đó có key là _200_ thì React nó sẽ nhận thấy là element có key là _100_ trước đó đã bị xóa (unmount), và sau đó là _200_ tức là mới có thì nó sẽ tạo mới (mount)
+
 ## Tại sao không nên sử dụng giá trị **index** trong key
 
 ## Tại sao nên sử dụng giá trị **index** trong key
