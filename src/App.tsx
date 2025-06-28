@@ -1,9 +1,9 @@
-import ReactKey from "./components/react-key/solution/react-key-index";
+import ReactKeyIndexV2 from "./components/react-key/solution/react-key-index-v2";
 
 function App() {
   return (
     <>
-      <ReactKey />
+      <ReactKeyIndexV2 />
     </>
   );
 }
