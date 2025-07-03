@@ -1,9 +1,9 @@
-import ReactKeyIndexV2 from "./components/react-key/solution/react-key-index-v2";
+import ReactReconciliationSolution from "./components/react-reconciliation/solution";
 
 function App() {
   return (
     <>
-      <ReactKeyIndexV2 />
+      <ReactReconciliationSolution />
     </>
   );
 }
