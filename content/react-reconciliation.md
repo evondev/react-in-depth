@@ -14,7 +14,7 @@ React Reconciliation là quá trình React sử dụng để so sánh (diff) gi�
 
 ## Thuật toán của reconciliation
 
-- Initial render(lần render đầu tiên của ứng dụng) thì:
+- Initial render(lần render đầu tiên của ứng dụng) thì React sẽ duyệt qua DOM tree và thực hiện các việc sau:
 - Nếu React thấy _type_ là `string`, thì nó sẽ chuyển thành element trong DOM. Ví dụ là "input", "label", "button"...
 - Còn nếu React thấy _type_ là `function`, thì nó gọi component đó sẽ duyệt qua toàn bộ DOM trong _return_ của component đó. Ví dụ là Input, Textarea, Button
 
@@ -70,11 +70,41 @@ const item = {
 
 ## Reconciliation và state
 
+- React thấy type ban đầu là input, sau khi re-render thì type trở thành div cho nên React sẽ xóa(unmount) input và tạo mới thẻ div(mouting), cho nên những giá trị mà mình nhập trước đó sẽ bị mất hết.
+
+```js
+const before = {
+  type: "input",
+  props: {...}
+};
+const after = {
+  type: "div",
+  props: {...}
+};
+```
+
+- Ban đầu React thấy type là input, sau khi re-render thì cũng thấy type là input, cho nên React hiểu đây là cùng một element cho nên React chỉ cập nhật những thay đổi mới mà thôi.
+
+```js
+const before = {
+  type: "input",
+  props: {
+    placeholder: "Enter your company number",
+  },
+};
+const after = {
+  type: "input",
+  props: {
+    placeholder: "Enter your person number",
+  },
+};
+```
+
 ## Giải quyết vấn đề
 
-## Reconciliation và array
+### Reconciliation và array
 
-## Reconciliation và Key
+### Reconciliation và Key
 
 ## Tại sao không cần _key_ bên ngoài mảng(rendering list)
 

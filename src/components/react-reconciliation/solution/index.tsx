@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Input from "./input";
-import Wrapper from "./wrapper";
 
 export interface ReactReconciliationSolutionProps {}
 
@@ -15,8 +13,6 @@ export default function ReactReconciliationSolution(
         checked={isCompany}
         onChange={(e) => setIsCompany(e.target.checked)}
       />
-      <Wrapper />
-      <Input placeholder="Enter your name" id="your-name" />
       {isCompany ? (
         <input
           className="p-3 border border-gray-300 rounded-md outline-none"
@@ -33,6 +29,3 @@ export default function ReactReconciliationSolution(
     </div>
   );
 }
-// const input = document.getElementById("your-name")
-// input.setAttribute("placeholder", "Enter your name");
-// virtual DOM -> DOM ảo
