@@ -13,7 +13,7 @@ export default function ReactReconciliationSolution(
         checked={isCompany}
         onChange={(e) => setIsCompany(e.target.checked)}
       />
-      {isCompany ? (
+      {/* {isCompany ? (
         <input
           type="text"
           className="p-3 border border-gray-300 rounded-md outline-none"
@@ -29,7 +29,25 @@ export default function ReactReconciliationSolution(
           placeholder="Enter your person number"
           key="person-number"
         />
-      )}
+      )} */}
+      {isCompany ? (
+        <input
+          type="text"
+          className="p-3 border border-gray-300 rounded-md outline-none"
+          id="company-number"
+          placeholder="Enter your company number"
+          key="dataa"
+        />
+      ) : null}
+      {!isCompany ? (
+        <input
+          type="text"
+          className="p-3 border border-gray-300 rounded-md outline-none"
+          id="person-number"
+          placeholder="Enter your person number"
+          key="dataa"
+        />
+      ) : null}
     </div>
   );
 }
@@ -81,6 +99,7 @@ const virtualDOMArray = {
       },
       {
         type: "input",
+        key: "dataa"
       },
       null,
     ],
@@ -95,6 +114,7 @@ const virtualDOMArray2 = {
       null,
       {
         type: "input",
+        key: "dataa"
       },
     ],
   },

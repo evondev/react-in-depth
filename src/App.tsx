@@ -1,12 +1,9 @@
-import ReactReconciliationSolution from "./components/react-reconciliation/solution";
+import ComponentKey from "./components/react-reconciliation/solution/component";
 
 function App() {
   return (
     <>
-      {[1, 2, 3].map((item) => (
-        <div>{item}</div>
-      ))}
-      <ReactReconciliationSolution />
+      <ComponentKey />
     </>
   );
 }

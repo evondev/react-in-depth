@@ -132,8 +132,14 @@ const after = [
 
 ### Reconciliation và Key
 
+- Sử dụng key khác nhau giúp React phân biệt được các element/component khác nhau từ đó giải quyết được bài toán
+
 ## Tại sao không cần _key_ bên ngoài mảng(rendering list)
 
+- Bởi vì khi sử dụng mảng thì React sẽ không biết được data nó sẽ như thế nào ? Nghĩa là nó có thể thêm, xóa, sửa, sắp xếp, thay đổi...
+
 ## Rendering list và element
+
+- Trong React, virtual DOM thì rendering list sẽ được render trong một mảng chứa các object có type, cho nên nếu có element đứng sau rendering list thì vị trí của nó cũng không bị tác động bởi rendering list
 
 ## Tại sao không nên định nghĩa component bên trong component khác ?
