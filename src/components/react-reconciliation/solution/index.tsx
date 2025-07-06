@@ -19,16 +19,17 @@ export default function ReactReconciliationSolution(
           className="p-3 border border-gray-300 rounded-md outline-none"
           id="company-number"
           placeholder="Enter your company number"
+          key="company-number"
         />
-      ) : null}
-      {!isCompany ? (
+      ) : (
         <input
           type="text"
           className="p-3 border border-gray-300 rounded-md outline-none"
           id="person-number"
           placeholder="Enter your person number"
+          key="person-number"
         />
-      ) : null}
+      )}
     </div>
   );
 }
@@ -46,6 +47,32 @@ const virtualDOM = {
   },
 };
 
+const virtualDOMArrayNew = {
+  props: {
+    children: [
+      {
+        type: "input", //checkbox
+      },
+      {
+        type: "input",
+        key:"company-number"
+      },
+    ],
+  },
+};
+const virtualDOMArrayNew2 = {
+  props: {
+    children: [
+      {
+        type: "input", //checkbox
+      },
+      {
+        type: "input",
+        key:"person-number"
+      },
+    ],
+  },
+};
 const virtualDOMArray = {
   props: {
     children: [
