@@ -68,9 +68,9 @@ const item = {
 </div>
 ```
 
-## Reconciliation và state
+## Reconciliation và state update
 
-- React thấy type ban đầu là input, sau khi re-render thì type trở thành div cho nên React sẽ xóa(unmount) input và tạo mới thẻ div(mouting), cho nên những giá trị mà mình nhập trước đó sẽ bị mất hết.
+- React thấy type ban đầu là input, sau khi re-render thì type trở thành `div` cho nên React sẽ xóa(unmount) `input` và tạo mới thẻ `div`(mouting), cho nên những giá trị mà mình nhập trước đó sẽ bị mất hết.
 
 ```js
 const before = {
@@ -83,7 +83,7 @@ const after = {
 };
 ```
 
-- Ban đầu React thấy type là input, sau khi re-render thì cũng thấy type là input, cho nên React hiểu đây là cùng một element cho nên React chỉ cập nhật những thay đổi mới mà thôi.
+- Ban đầu React thấy type là `input`, sau khi re-render thì cũng thấy type là `input`, cho nên React hiểu đây là cùng một element cho nên React chỉ cập nhật những thay đổi mới mà thôi.
 
 ```js
 const before = {
@@ -103,6 +103,32 @@ const after = {
 ## Giải quyết vấn đề
 
 ### Reconciliation và array
+
+- Với việc viết lại điều kiện với conditional rendering thì chúng ta đã giải quyết được bài toán khi mà hiểu được việc virtual DOM render ra dưới dạng array bằng việc thay đổi vị trí của chúng trong mảng.
+- Như ví dụ bên dưới thì before và after giống nhau thì react sẽ giữ nguyên element đó và chỉ re-render, còn nếu khác thì nó sẽ unmount phần tử before và mounting phần tử after
+
+```jsx
+// isCompany is true
+const before = [
+  {
+    type: "input",
+  },
+  {
+    type: "input",
+  },
+  null,
+];
+// isCompany is false
+const after = [
+  {
+    type: "input",
+  },
+  null,
+  {
+    type: "input",
+  },
+];
+```
 
 ### Reconciliation và Key
 
