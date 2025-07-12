@@ -1,25 +1,11 @@
-import ComponentKey from "./components/react-reconciliation/solution/component";
+import ReactReRenderProblem from "./components/re-renders/problem";
 
 function App() {
   return (
     <>
-      <ComponentKey />
+      <ReactReRenderProblem />
     </>
   );
 }
-// const list = [
-//   {
-//     type: "div",
-//     key: "3"
-//   },
-//   {
-//     type: "div",
-//     key: "2"
-//   },
-//   {
-//     type: "div",
-//     key: "1"
-//   },
-// ];
 
 export default App;
