@@ -33,6 +33,8 @@
 
 # Moving state down
 
+- Đưa state vào những component liên quan để tránh ảnh hưởng tới những components khác để cải thiện performance
+
 # Cẩn thận khi dùng custom hooks
 
 # Component re-renders khi props của chúng thay đổi ?

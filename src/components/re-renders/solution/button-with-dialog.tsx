@@ -9,16 +9,16 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import useModalDialog from "./use-modal-dialog";
 
 export interface ButtonWithDialogProps {}
 
 export default function ButtonWithDialog(_props: ButtonWithDialogProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, open, close } = useModalDialog();
 
   return (
     <div>
-      <Button className="cursor-pointer" onClick={() => setIsOpen(true)}>
+      <Button className="cursor-pointer" onClick={open}>
         Open dialog
       </Button>
       <AlertDialog open={isOpen}>
@@ -31,9 +31,7 @@ export default function ButtonWithDialog(_props: ButtonWithDialogProps) {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setIsOpen(false)}>
-              Cancel
-            </AlertDialogCancel>
+            <AlertDialogCancel onClick={close}>Cancel</AlertDialogCancel>
             <AlertDialogAction>Continue</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
