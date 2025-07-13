@@ -1,9 +1,9 @@
-import ReactReRenderProblem from "./components/re-renders/problem";
+import ReactReRenderSolution from "./components/re-renders/solution";
 
 function App() {
   return (
     <>
-      <ReactReRenderProblem />
+      <ReactReRenderSolution />
     </>
   );
 }
