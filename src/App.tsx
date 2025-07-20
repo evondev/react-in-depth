@@ -1,9 +1,9 @@
-import ReactReRenderSolution from "./components/re-renders/solution";
+import ChildrenPropsSolution from "./components/re-renders/solution/children-props";
 
 function App() {
   return (
     <>
-      <ReactReRenderSolution />
+      <ChildrenPropsSolution />
     </>
   );
 }
