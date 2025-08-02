@@ -1,9 +1,16 @@
-import ChildrenPropsSolution from "./components/re-renders/solution/children-props";
+import ButtonWithIconProblemSolution from "./components/re-renders/solution/button-with-icon";
+import IconPlus from "./components/re-renders/solution/icon-plus";
 
 function App() {
   return (
     <>
-      <ChildrenPropsSolution />
+      <ButtonWithIconProblemSolution
+        iconLeft={<IconPlus />}
+        size="lg"
+        variant="secondary"
+      >
+        Get Started
+      </ButtonWithIconProblemSolution>
     </>
   );
 }
