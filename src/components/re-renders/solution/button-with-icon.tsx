@@ -1,4 +1,9 @@
-import React, { type HTMLAttributes, type ReactElement } from "react";
+import { cn } from "@/lib/utils";
+import React, {
+  type ComponentProps,
+  type HTMLAttributes,
+  type ReactElement,
+} from "react";
 
 /**
  * variants: "primary" | "secondary" | "ghost"
@@ -10,7 +15,8 @@ import React, { type HTMLAttributes, type ReactElement } from "react";
  */
 type ButtonVariants = "primary" | "secondary" | "ghost";
 type ButtonSizes = "sm" | "md" | "lg";
-export interface ButtonWithIconProblemSolutionProps {
+export interface ButtonWithIconProblemSolutionProps
+  extends ComponentProps<"button"> {
   isLoading?: boolean;
   variant: ButtonVariants;
   iconLeft?: ReactElement<HTMLAttributes<HTMLElement>, string>;
@@ -27,11 +33,20 @@ export default function ButtonWithIconProblemSolution({
   iconRight,
   variant,
   size,
+  isDisabled,
+  className,
+  ...props
 }: ButtonWithIconProblemSolutionProps) {
   const variantsClassNames: Record<ButtonVariants, string> = {
     ghost: "border border-current",
     primary: "text-white bg-blue-500",
     secondary: "text-white bg-black",
+  };
+
+  const iconVariantsClassNames: Record<ButtonVariants, string> = {
+    ghost: "stroke-blue-400",
+    primary: "stroke-white",
+    secondary: "stroke-white",
   };
 
   const iconSizesClassNames: Record<ButtonSizes, string> = {
@@ -46,17 +61,39 @@ export default function ButtonWithIconProblemSolution({
     lg: "py-4 px-8 text-lg",
   };
 
-  const leftIconCloned = iconLeft
+  const { className: iconLeftClassName, ...iconLeftOtherProps } =
+    iconLeft?.props || {};
+
+  // const iconLeftPropsDemo = {
+  //   className: "",
+  //   abc: "",
+  //   xyz: ""
+  // }
+  // const {className, ...otherProps} = iconLeftPropsDemo;
+  // {abc: "", xyz: ""}
+
+  const iconLeftCloned = iconLeft
     ? React.cloneElement(iconLeft, {
-        className: iconSizesClassNames[size],
+        className: cn(
+          iconSizesClassNames[size],
+          iconVariantsClassNames[variant],
+          iconLeftClassName
+        ),
+        ...iconLeftOtherProps,
       })
     : null;
 
   return (
     <button
-      className={`inline-flex items-center py-3 px-6 rounded-full cursor-pointer gap-2 ${variantsClassNames[variant]} ${sizesClassNames[size]}`}
+      className={cn(
+        "flex items-center py-3 px-6 rounded-full cursor-pointer gap-2",
+        variantsClassNames[variant],
+        sizesClassNames[size],
+        className
+      )}
+      {...props}
     >
-      {leftIconCloned}
+      {iconLeftCloned}
       {children}
       {iconRight}
     </button>

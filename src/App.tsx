@@ -5,11 +5,12 @@ function App() {
   return (
     <>
       <ButtonWithIconProblemSolution
-        iconLeft={<IconPlus />}
-        size="lg"
-        variant="secondary"
+        iconLeft={<IconPlus className="stroke-pink-500 size-7" />}
+        size="md"
+        variant="ghost"
+        className="gap-5"
       >
-        Get Started
+        <span>Get Started</span>
       </ButtonWithIconProblemSolution>
     </>
   );
