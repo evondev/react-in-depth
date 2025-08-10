@@ -44,7 +44,7 @@ export default function ButtonWithIconProblemSolution({
   };
 
   const iconVariantsClassNames: Record<ButtonVariants, string> = {
-    ghost: "stroke-blue-400",
+    ghost: "stroke-current",
     primary: "stroke-white",
     secondary: "stroke-white",
   };
@@ -59,6 +59,12 @@ export default function ButtonWithIconProblemSolution({
     sm: "py-2 px-4 text-sm",
     md: "py-3 px-6 text-base",
     lg: "py-4 px-8 text-lg",
+  };
+
+  const loadingSizeClassNames: Record<ButtonSizes, string> = {
+    sm: "size-5 border",
+    md: "size-6 border",
+    lg: "size-8",
   };
 
   const { className: iconLeftClassName, ...iconLeftOtherProps } =
@@ -83,16 +89,27 @@ export default function ButtonWithIconProblemSolution({
       })
     : null;
 
+  const loading = (
+    <div
+      className={cn(
+        "size-10 rounded-full border-4 border-current border-y-transparent animate-spin absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 [&~*]:opacity-0 [&~*]:invisible",
+        loadingSizeClassNames[size]
+      )}
+    ></div>
+  );
+
   return (
     <button
       className={cn(
-        "flex items-center py-3 px-6 rounded-full cursor-pointer gap-2",
+        "flex items-center py-3 px-6 rounded-full cursor-pointer gap-2 disabled:cursor-not-allowed relative disabled:opacity-50",
         variantsClassNames[variant],
         sizesClassNames[size],
         className
       )}
+      disabled={isDisabled || isLoading}
       {...props}
     >
+      {isLoading && loading}
       {iconLeftCloned}
       {children}
       {iconRight}
