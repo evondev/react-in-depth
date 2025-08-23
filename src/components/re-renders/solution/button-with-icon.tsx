@@ -15,8 +15,7 @@ import React, {
  */
 type ButtonVariants = "primary" | "secondary" | "ghost";
 type ButtonSizes = "sm" | "md" | "lg";
-export interface ButtonWithIconProblemSolutionProps
-  extends ComponentProps<"button"> {
+export interface ButtonWithIconSolutionProps extends ComponentProps<"button"> {
   isLoading?: boolean;
   variant: ButtonVariants;
   iconLeft?: ReactElement<HTMLAttributes<HTMLElement>, string>;
@@ -26,7 +25,7 @@ export interface ButtonWithIconProblemSolutionProps
   children: React.ReactNode;
 }
 
-export default function ButtonWithIconProblemSolution({
+export default function ButtonWithIconSolution({
   isLoading,
   children,
   iconLeft,
@@ -36,7 +35,7 @@ export default function ButtonWithIconProblemSolution({
   isDisabled,
   className,
   ...props
-}: ButtonWithIconProblemSolutionProps) {
+}: ButtonWithIconSolutionProps) {
   const variantsClassNames: Record<ButtonVariants, string> = {
     ghost: "border border-current",
     primary: "text-white bg-blue-500",
@@ -111,7 +110,7 @@ export default function ButtonWithIconProblemSolution({
     >
       {isLoading && loading}
       {iconLeftCloned}
-      {children}
+      {isLoading ? <div>{children}</div> : children}
       {iconRight}
     </button>
   );
