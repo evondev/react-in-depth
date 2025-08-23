@@ -1,106 +1,56 @@
-import ToggleSolution from "./components/react-patterns/render-props/solutions/toggle";
+import ListSolution from "./components/react-patterns/render-props/solutions/list";
 import { cn } from "./lib/utils";
 
 function App() {
+  const items: {
+    title: string;
+    level: "easy" | "medium" | "expert";
+  }[] = [
+    {
+      title: "React in depth course",
+      level: "medium",
+    },
+    {
+      title: "HTML CSS for beginners",
+      level: "easy",
+    },
+    {
+      title: "NextJS in depth",
+      level: "expert",
+    },
+  ];
   return (
-    <div className="flex gap-5 items-center">
-      <ToggleSolution
-        render={({ isOn, toggle }) => {
+    <div className="flex gap-5 flex-col">
+      <ListSolution
+        items={["evondev", "react advanced", "react in depth"]}
+        render={(item, index) => {
           return (
-            <div className="flex h-6 items-center">
-              <div
-                className={cn(
-                  "group relative inline-flex w-8 shrink-0 rounded-full bg-white/5 p-px inset-ring inset-ring-white/10 outline-offset-2 outline-indigo-500 transition-colors duration-200 ease-in-out has-focus-visible:outline-2",
-                  {
-                    "bg-indigo-500": isOn,
-                  }
-                )}
-                onClick={toggle}
-              >
-                <span
-                  className={cn(
-                    "size-4 rounded-full bg-white shadow-xs ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out",
-                    {
-                      "translate-x-3.5": isOn,
-                    }
-                  )}
-                ></span>
-                <input
-                  id="agree-to-policies"
-                  type="checkbox"
-                  name="agree-to-policies"
-                  aria-label="Agree to policies"
-                  checked={isOn}
-                  className="absolute inset-0 appearance-none focus:outline-hidden"
-                />
+            <div key={index} className="flex items-center gap-3 text-white">
+              <div className="rounded-full bg-indigo-500 size-5 text-white font-bold flex items-center justify-center text-xs">
+                {index + 1}
               </div>
+              <div>{item}</div>
             </div>
           );
         }}
       />
-      <ToggleSolution
-        render={({ isOn, toggle }) => {
+      <ListSolution
+        items={items}
+        render={(item, index) => {
           return (
-            <div className="flex h-6 items-center">
+            <div key={index} className="flex items-center gap-3 text-white">
+              <div>{item.title}</div>
               <div
                 className={cn(
-                  "group relative inline-flex w-8 shrink-0 rounded-full bg-white/5 p-px inset-ring inset-ring-white/10 outline-offset-2 outline-pink-500 transition-colors duration-200 ease-in-out has-focus-visible:outline-2",
+                  "rounded-full bg-pink-500 p-2 text-white font-bold flex items-center justify-center text-xs",
                   {
-                    "bg-pink-500": isOn,
+                    "bg-green-500": item.level === "easy",
+                    "bg-orange-500": item.level === "medium",
+                    "bg-red-500": item.level === "expert",
                   }
                 )}
-                onClick={toggle}
               >
-                <span
-                  className={cn(
-                    "size-4 rounded-full bg-white shadow-xs ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out",
-                    {
-                      "translate-x-3.5": isOn,
-                    }
-                  )}
-                ></span>
-                <input
-                  id="agree-to-policies"
-                  type="checkbox"
-                  name="agree-to-policies"
-                  aria-label="Agree to policies"
-                  checked={isOn}
-                  className="absolute inset-0 appearance-none focus:outline-hidden"
-                />
-              </div>
-            </div>
-          );
-        }}
-      />
-      <ToggleSolution
-        render={({ isOn, toggle }) => {
-          return (
-            <div className="flex h-6 items-center">
-              <div
-                className={cn(
-                  "group relative inline-flex w-8 shrink-0 rounded-xs bg-white/5 p-px inset-ring inset-ring-white/10 outline-offset-2 outline-orange-500 transition-colors duration-200 ease-in-out has-focus-visible:outline-2",
-                  {
-                    "bg-orange-500": isOn,
-                  }
-                )}
-                onClick={toggle}
-              >
-                <span
-                  className={cn(
-                    "size-4 rounded-xs bg-white shadow-xs ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out",
-                    {
-                      "translate-x-3.5": isOn,
-                    }
-                  )}
-                ></span>
-                <input
-                  id="agree-to-policies"
-                  type="checkbox"
-                  name="agree-to-policies"
-                  aria-label="Agree to policies"
-                  checked={isOn}
-                  className="absolute inset-0 appearance-none focus:outline-hidden"
-                />
+                {item.level}
               </div>
             </div>
           );

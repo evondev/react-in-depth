@@ -1,15 +1,11 @@
-export interface ListProblemProps {
-  items: string[];
+export interface ListSolutionProps<T> {
+  items: T[];
+  render: (item: T, index: number) => React.ReactNode;
 }
 
-export default function ListProblem({ items = [] }: ListProblemProps) {
-  return (
-    <div>
-      {items.map((item, index) => (
-        <div key={index} style={{ color: index % 2 === 0 ? "blue" : "red" }}>
-          {index + 1}. {item}
-        </div>
-      ))}
-    </div>
-  );
+export default function ListSolution<T>({
+  items = [],
+  render,
+}: ListSolutionProps<T>) {
+  return <>{items.map((item, index) => render(item, index))}</>;
 }
