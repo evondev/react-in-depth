@@ -2,18 +2,18 @@ Trong React, High-Order Component (HOC) là một kỹ thuật nâng cao đượ
 
 # Ưu điểm của HOC
 
-- Tái sử dụng logic: HOC cho phép tách biệt logic chung (như xác thực, logging, hoặc xử lý dữ liệu) và áp dụng cho nhiều component mà không cần lặp lại code.
-- Tăng tính module: Logic được đóng gói trong HOC, giúp mã dễ bảo trì và mở rộng.
-- Không làm thay đổi component gốc: HOC không sửa đổi trực tiếp component được truyền vào, giữ nguyên tính toàn vẹn của component.
-- Tính linh hoạt: Một HOC có khả năng được sử dụng cho nhiều component khác nhau.
+- _Tái sử dụng logic_: HOC cho phép tách biệt logic chung (như xác thực, logging, hoặc xử lý dữ liệu) và áp dụng cho nhiều component mà không cần lặp lại code.
+- _Tăng tính module_: Logic được đóng gói trong HOC, giúp mã dễ bảo trì và mở rộng.
+- _Không làm thay đổi component gốc_: HOC không sửa đổi trực tiếp component được truyền vào, giữ nguyên tính toàn vẹn của component.
+- _Tính linh hoạt_: Một HOC có khả năng được sử dụng cho nhiều component khác nhau.
 
 # Nhược điểm của HOC
 
-- Tăng độ phức tạp: HOC có thể làm cho cấu trúc mã trở nên khó hiểu, đặc biệt khi sử dụng nhiều HOC lồng nhau (HOC nesting).
-- Vấn đề về tên component: Trong React DevTools, tên của component được bọc bởi HOC có thể không rõ ràng, gây khó khăn khi debug.
-- Xung đột props: Nếu HOC và component gốc sử dụng cùng tên props, có thể xảy ra xung đột nếu không được xử lý cẩn thận.
-- Hiệu suất: Việc lồng nhiều HOC có thể dẫn đến render không cần thiết nếu không tối ưu hóa đúng cách.
-- Khó chia sẻ state logic phức tạp: HOC không phù hợp cho các trường hợp cần chia sẻ state giữa các component một cách động (React Hooks thường tốt hơn trong trường hợp này).
+- _Tăng độ phức tạp_: HOC có thể làm cho cấu trúc mã trở nên khó hiểu, đặc biệt khi sử dụng nhiều HOC lồng nhau (HOC nesting).
+- _Vấn đề về tên component_: Trong React DevTools, tên của component được bọc bởi HOC có thể không rõ ràng, gây khó khăn khi debug.
+- _Xung đột props_: Nếu HOC và component gốc sử dụng cùng tên props, có thể xảy ra xung đột nếu không được xử lý cẩn thận.
+- _Hiệu suất_: Việc lồng nhiều HOC có thể dẫn đến render không cần thiết nếu không tối ưu hóa đúng cách.
+- _Khó chia sẻ state logic phức tạp_: HOC không phù hợp cho các trường hợp cần chia sẻ state giữa các component một cách động (React Hooks thường tốt hơn trong trường hợp này).
 
 # Khi nào nên sử dụng HOC?
 
